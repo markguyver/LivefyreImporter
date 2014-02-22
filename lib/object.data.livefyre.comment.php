@@ -1,7 +1,7 @@
 <?php
 
-	namespace Markguyver\LivefireImporter\Data\Livefyre;
+	namespace Markguyver\LivefyreImporter\Data\Livefyre;
 	
-	class Comment extends Base { // Declare \Markguyver\LivefireImporter\Data\Livefyre\Comment class
+	class Comment extends Base { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Comment class
 	
-	} // End of Declare \Markguyver\LivefireImporter\Data\Livefyre\Comment class
+	} // End of Declare \Markguyver\LivefyreImporter\Data\Livefyre\Comment class

@@ -1,7 +1,7 @@
 <?php
 
-	namespace Markguyver\LivefireImporter\View;
+	namespace Markguyver\LivefyreImporter\View;
 	
-	interface Base { // Declare \Markguyver\LivefireImporter\View\Base interface
+	interface Base { // Declare \Markguyver\LivefyreImporter\View\Base interface
 		
-	} // End of Declare \Markguyver\LivefireImporter\View\Base interface
+	} // End of Declare \Markguyver\LivefyreImporter\View\Base interface

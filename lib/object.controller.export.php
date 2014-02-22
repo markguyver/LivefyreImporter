@@ -1,7 +1,7 @@
 <?php
 
-	namespace Markguyver\LivefireImporter\Controller;
+	namespace Markguyver\LivefyreImporter\Controller;
 	
-	class Export extends Base { // Declare \Markguyver\LivefireImporter\Controller\Export class
+	class Export extends Base { // Declare \Markguyver\LivefyreImporter\Controller\Export class
 	
-	} // End of Declare \Markguyver\LivefireImporter\Controller\Export class
+	} // End of Declare \Markguyver\LivefyreImporter\Controller\Export class

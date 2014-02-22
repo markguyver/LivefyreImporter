@@ -1,3 +1,3 @@
 <?php
 
-	namespace Markguyver\LivefireImporter;
+	namespace Markguyver\LivefyreImporter;

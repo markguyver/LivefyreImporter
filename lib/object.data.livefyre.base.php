@@ -1,7 +1,7 @@
 <?php
 
-	namespace Markguyver\LivefireImporter\Data\Livefyre;
+	namespace Markguyver\LivefyreImporter\Data\Livefyre;
 	
-	abstract class Base extends \Markguyver\LivefireImporter\Helper\Validator { // Declare \Markguyver\LivefireImporter\Data\Livefyre\Base abstract class
+	abstract class Base extends \Markguyver\LivefyreImporter\Helper\Validator { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Base abstract class
 	
-	} // End of Declare \Markguyver\LivefireImporter\Data\Livefyre\Base abstract class
+	} // End of Declare \Markguyver\LivefyreImporter\Data\Livefyre\Base abstract class

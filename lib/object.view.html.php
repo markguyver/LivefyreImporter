@@ -1,7 +1,7 @@
 <?php
 
-	namespace Markguyver\LivefireImporter\View;
+	namespace Markguyver\LivefyreImporter\View;
 	
-	class HTML implements Base { // Declare \Markguyver\LivefireImporter\View\HTML class
+	class HTML implements Base { // Declare \Markguyver\LivefyreImporter\View\HTML class
 	
-	} // End of Declare \Markguyver\LivefireImporter\View\HTML class
+	} // End of Declare \Markguyver\LivefyreImporter\View\HTML class

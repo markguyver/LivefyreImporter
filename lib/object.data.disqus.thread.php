@@ -1,7 +1,7 @@
 <?php
 
-	namespace Markguyver\LivefireImporter\Data\Disqus;
+	namespace Markguyver\LivefyreImporter\Data\Disqus;
 	
-	class Thread extends \Markguyver\LivefireImporter\Data\Livefyre\Conversation { // Declare \Markguyver\LivefireImporter\Data\Disqus\Thread class
+	class Thread extends \Markguyver\LivefyreImporter\Data\Livefyre\Conversation { // Declare \Markguyver\LivefyreImporter\Data\Disqus\Thread class
 		
-	} // End of Declare \Markguyver\LivefireImporter\Data\Disqus\Thread class
+	} // End of Declare \Markguyver\LivefyreImporter\Data\Disqus\Thread class

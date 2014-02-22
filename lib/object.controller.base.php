@@ -1,7 +1,7 @@
 <?php
 
-	namespace Markguyver\LivefireImporter\Controller;
+	namespace Markguyver\LivefyreImporter\Controller;
 	
-	abstract class Base { // Declare \Markguyver\LivefireImporter\Controller\Base abstract class
+	abstract class Base extends \Markguyver\LivefyreImporter\Database\Usage { // Declare \Markguyver\LivefyreImporter\Controller\Base abstract class
 		
-	} // End of Declare \Markguyver\LivefireImporter\Controller\Base abstract class
+	} // End of Declare \Markguyver\LivefyreImporter\Controller\Base abstract class

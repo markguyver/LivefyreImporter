@@ -1,7 +1,7 @@
 <?php
 
-	namespace Markguyver\LivefireImporter\View;
+	namespace Markguyver\LivefyreImporter\View;
 	
-	class CLI implements Base { // Declare \Markguyver\LivefireImporter\View\CLI class
+	class CLI implements Base { // Declare \Markguyver\LivefyreImporter\View\CLI class
 	
-	} // End of Declare \Markguyver\LivefireImporter\View\CLI class
+	} // End of Declare \Markguyver\LivefyreImporter\View\CLI class

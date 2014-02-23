@@ -7,7 +7,7 @@
 	 * The autoloader is namespace-aware and object filenames should follow: object.namespace.classname.php (with the namespaces and classnames all lowercase).
 	 * @param string $class \Markguyver\LivefyreImporter\Namespace\ClassName
 	 */
-	function object_autoloader( $class ) {
+	function object_autoloader( $class ) { // Declare \Markguyver\LivefyreImporter\object_autoloader() function
 		$class = explode( '\\', $class );
 		if ( count( $class ) > 2 ) { // Validate Class Namespaces
 			$root = array_shift( $class );
@@ -24,6 +24,6 @@
 				} // End of Check for Constructed Filepath
 			} // End of Check for Framework Namespace
 		} // End of Validate Class Namespaces
-	}
+	} // End of Declare \Markguyver\LivefyreImporter\object_autoloader() function
 	
-	\spl_autoload_register( __NAMESPACE__ . '\object_autoloader' );
+	\spl_autoload_register( __NAMESPACE__ . '\object_autoloader' ); // Register Framework Autoloader

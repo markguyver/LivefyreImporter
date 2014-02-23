@@ -2,7 +2,16 @@
 
 	namespace Markguyver\LivefyreImporter\Database;
 	
-	abstract class Base extends \Markguyver\LivefyreImporter\Helper\Error_Message { // Declare \Markguyver\LivefyreImporter\Database\Base abstract class
+	abstract class Base { // Declare \Markguyver\LivefyreImporter\Database\Base abstract class
+		
+		use \Markguyver\LivefyreImporter\Helper\Error_Message; // Add Error_Message Trait
+		
+		protected $default_host = '127.0.0.1';
+		
+		protected $connection_error_message = false;
+		
+		protected $database_handle = false;
+		protected $prepared_statement_handles = array();
 		
 		protected static $pdo_database;
 		
@@ -12,13 +21,6 @@
 			} // End of Check for Existing Database Handle
 			return static::$pdo_database;
 		} // End of Declare \Markguyver\LivefyreImporter\Database\Base::get_instance() function
-		
-		protected $default_host = '127.0.0.1';
-		
-		protected $connection_error_message = false;
-		
-		protected $database_handle = false;
-		protected $prepared_statement_handles = array();
 		
 		abstract protected function __construct(); // Declare \Markguyver\LivefyreImporter\Database\Base->__construct() abstract function
 		

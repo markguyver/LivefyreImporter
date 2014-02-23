@@ -2,7 +2,7 @@
 
 	namespace Markguyver\LivefyreImporter\Helper;
 	
-	class Validator { // Declare \Markguyver\LivefyreImporter\Helper\Validator class
+	trait Validator { // Declare \Markguyver\LivefyreImporter\Helper\Validator trait
 		
 		public static function validate_string( $string ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_string() function
 			$return = false;
@@ -81,4 +81,4 @@
 			return $return;
 		}
 		
-	} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator class
+	} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator trait

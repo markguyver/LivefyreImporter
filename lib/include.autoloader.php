@@ -13,15 +13,17 @@
 			$root = array_shift( $class );
 			$primary = array_shift( $class );
 			if ( ( 'Markguyver' == $root ) AND ( 'LivefyreImporter' == $primary ) ) { // Check for Framework Namespace
-				$filepath = array( 'object' );
+				$filepath_prefixes = array( 'object', 'trait' );
 				foreach ( $class AS $current_namespace ) { // Loop through Object Namespace
 					$filepath[] = strtolower( $current_namespace );
 				} // End of Loop through Object Namespace
 				$filepath[] = 'php';
-				$class = get_library_path() . implode( '.', $filepath );
-				if ( file_exists( $class ) ) { // Check for Constructed Filepath
-					include_once( $class );
-				} // End of Check for Constructed Filepath
+				foreach ( $filepath_prefixes AS $current_prefix ) { // Loop through Filepath Prefixes
+					$current_class_path = get_library_path() . implode( '.', array_merge( array( $current_prefix ), $filepath ) );
+					if ( file_exists( $current_class_path ) ) { // Check for Constructed Filepath
+						include_once( $current_class_path );
+					} // End of Check for Constructed Filepath
+				} // End of Loop through Filepath Prefixes
 			} // End of Check for Framework Namespace
 		} // End of Validate Class Namespaces
 	} // End of Declare \Markguyver\LivefyreImporter\object_autoloader() function

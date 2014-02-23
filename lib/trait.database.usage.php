@@ -2,7 +2,7 @@
 
 	namespace Markguyver\LivefyreImporter\Database;
 	
-	abstract class Usage { // Declare \Markguyver\LivefyreImporter\Database\Usage abstract class
+	trait Usage { // Declare \Markguyver\LivefyreImporter\Database\Usage trait
 
 		protected $database;
 		
@@ -14,4 +14,4 @@
 			return $this->database->check_connection();
 		} // End of Declare \Markguyver\LivefyreImporter\Database\Usage->get_database() function
 		
-	} // End of Declare \Markguyver\LivefyreImporter\Database\Usage abstract class
+	} // End of Declare \Markguyver\LivefyreImporter\Database\Usage trait

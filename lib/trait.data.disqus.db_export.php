@@ -2,8 +2,9 @@
 
 	namespace Markguyver\LivefyreImporter\Data\Disqus;
 	
-	// User object MUST have $this->export_disqus_object() function
 	trait DB_Export { // Declare \Markguyver\LivefyreImporter\Data\Disqus\DB_Export trait
+		
+		abstract public function export_disqus_object(); // Declare Declare \Markguyver\LivefyreImporter\Data\Disqus\DB_Export->export_disqus_object() abstract function
 		
 		public function get_prepared_insert_array() { // Declare \Markguyver\LivefyreImporter\Data\Disqus\DB_Export->get_insert_array() function
 			$return = array();

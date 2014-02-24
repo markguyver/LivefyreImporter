@@ -4,7 +4,7 @@
 	
 	trait Is_Spam { // Declare \Markguyver\LivefyreImporter\Data\Disqus\Is_Spam trait
 	
-		protected $is_spam = false;			// Required Field
+		protected $is_spam = false; // Required Field
 	
 		public function get_is_spam( $is_spam ) { // Declare \Markguyver\LivefyreImporter\Data\Disqus\Is_Spam->get_is_spam() function
 			return $this->is_spam;

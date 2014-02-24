@@ -8,7 +8,7 @@
 		
 		protected static $db_table_name;
 		
-		protected $id;						// Required Field
+		protected $id; // Required Field
 		
 		public static function get_db_table_name() { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Base::get_db_table_name() function
 			return static::$db_table_name;
@@ -28,8 +28,7 @@
 			$return = array();
 			if ( count( $livefyre_data_objects ) ) { // Check for Passed Parameter Items
 				foreach ( $livefyre_data_objects AS $current_data_object ) { // Loop through Passed Parameter Items
-					if ( is_a( $current_data_object, self ) ) { // Validate Current Data Object
-//					if ( is_a( $current_data_object, '\Markguyver\LivefyreImporter\Data\Livefyre\Base' ) ) { // Validate Current Data Object
+					if ( $current_data_object instanceof self ) { // Validate Current Data Object
 						$return[] = $current_data_object->export_livefyre_object_json();
 					} // End of Validate Current Data Object
 				} // End of Loop through Passed Parameter Items

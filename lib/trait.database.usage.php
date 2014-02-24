@@ -8,9 +8,9 @@
 		
 		protected function get_database() { // Declare \Markguyver\LivefyreImporter\Database\Usage->get_database() function
 			$database_class_name = \Markguyver\LivefyreImporter\DATABASE_OBJECT_NAME;
-			if ( ! is_a( $this->database, $database_class_name ) ) {
+			if ( ! $this->database instanceof $database_class_name ) { // Check Class Database Attribute
 				$this->database = $database_class_name::get_instance();
-			}
+			}  // End of Check Class Database Attribute
 			return $this->database->check_connection();
 		} // End of Declare \Markguyver\LivefyreImporter\Database\Usage->get_database() function
 		

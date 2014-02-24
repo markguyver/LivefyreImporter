@@ -24,8 +24,12 @@
 		protected function set_last_error_message( $message ) { // Declare \Markguyver\LivefyreImporter\Helper\Error_Message->set_last_error_message() function
 			$this->last_error_message = trim( (string) $message );
 			if ( $this->debug ) { // Check Debug Setting
-				$this->errors[] = $this->last_error_message;
+				$this->add_error_message( $message );
 			} // End of Check Debug Setting
 		} // End of Declare \Markguyver\LivefyreImporter\Helper\Error_Message->set_last_error_message() function
+		
+		protected function add_error_message( $message ) { // Declare \Markguyver\LivefyreImporter\Helper\Error_Message->add_error_message() function
+			$this->errors[] = trim( (string) $message );
+		} // End of Declare \Markguyver\LivefyreImporter\Helper\Error_Message->add_error_message() function
 		
 	} // End of Declare \Markguyver\LivefyreImporter\Helper\Error_Message trait

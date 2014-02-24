@@ -4,7 +4,8 @@
 	
 	abstract class Base { // Declare \Markguyver\LivefyreImporter\Database\Base abstract class
 		
-		use \Markguyver\LivefyreImporter\Helper\Error_Message; // Add Error_Message Trait
+		use \Markguyver\LivefyreImporter\Helper\Singleton;		// Add Singleton Trait
+		use \Markguyver\LivefyreImporter\Helper\Error_Message;	// Add Error_Message Trait
 		
 		protected $default_host = '127.0.0.1';
 		
@@ -12,17 +13,6 @@
 		
 		protected $database_handle = false;
 		protected $prepared_statement_handles = array();
-		
-		protected static $pdo_database;
-		
-		public static function get_instance() { // Declare \Markguyver\LivefyreImporter\Database\Base::get_instance() function
-			if ( ! is_a( static::$pdo_database, __NAMESPACE__ . '\Base' ) ) { // Check for Existing Database Handle
-				static::$pdo_database = new static();
-			} // End of Check for Existing Database Handle
-			return static::$pdo_database;
-		} // End of Declare \Markguyver\LivefyreImporter\Database\Base::get_instance() function
-		
-		abstract protected function __construct(); // Declare \Markguyver\LivefyreImporter\Database\Base->__construct() abstract function
 		
 		public function check_connection() { // Declare \Markguyver\LivefyreImporter\Database\Base->check_connection() function
 			return (bool) $this->database_handle;

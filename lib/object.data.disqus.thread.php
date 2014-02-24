@@ -4,9 +4,9 @@
 	
 	class Thread extends \Markguyver\LivefyreImporter\Data\Livefyre\Conversation { // Declare \Markguyver\LivefyreImporter\Data\Disqus\Thread class
 	
-		use Is_Deleted; // Add Is_Deleted Trait
-		use Disqus_ID; // Add Disqus_ID Trait
-		use DB_Export; // Add DB_Export Trait
+		use Is_Deleted;	// Add Is_Deleted Trait
+		use Disqus_ID;	// Add Disqus_ID Trait
+		use DB_Export;	// Add DB_Export Trait
 	
 		protected $delay_export = false;	// Required Field
 		protected $forum;					// Optional Field

@@ -4,10 +4,10 @@
 	
 	class Post extends \Markguyver\LivefyreImporter\Data\Livefyre\Comment { // Declare \Markguyver\LivefyreImporter\Data\Disqus\Post class
 	
-		use Is_Deleted; // Add Is_Deleted Trait
-		use Is_Spam; // Add Is_Spam Trait
-		use Disqus_ID; // Add Disqus_ID Trait
-		use DB_Export; // Add DB_Export Trait
+		use Is_Deleted;	// Add Is_Deleted Trait
+		use Is_Spam;	// Add Is_Spam Trait
+		use Disqus_ID;	// Add Disqus_ID Trait
+		use DB_Export;	// Add DB_Export Trait
 	
 		public function export_disqus_object() { // Declare \Markguyver\LivefyreImporter\Data\Disqus\Post->export_disqus_object() function
 			$return = new \stdClass();

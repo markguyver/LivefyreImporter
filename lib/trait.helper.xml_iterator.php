@@ -4,13 +4,13 @@
 	
 	trait XML_Iterator { // Declare \Markguyver\LivefyreImporter\Helper\XML_Iterator trait
 		
-		use \Markguyver\LivefyreImporter\Helper\Validator; // Add Validator Trait
-		
 		protected $xml_data_filepath = false;
 		
 		protected $xml_data_object = false;
 		
 		protected $xml_iteration_node_name = false;
+		
+		public abstract function validate_string( $string );
 		
 		public function get_xml_data_filepath() { // Declare \Markguyver\LivefyreImporter\Helper\XML_Iterator->get_xml_data_filepath() function
 			return $this->xml_data_filepath;
@@ -18,7 +18,7 @@
 		
 		protected function set_xml_data_filepath( $filepath ) { // Declare \Markguyver\LivefyreImporter\Helper\XML_Iterator->set_xml_data_filepath() function
 			$return = false;
-			$filepath = static::validate_string( $filepath );
+			$filepath = $this->validate_string( $filepath );
 			if ( $filepath AND is_readable( $filepath ) ) { // Check for Passed Filepath Parameter
 				$this->xml_data_filepath = $filepath;
 			} // End of Check for Passed Filepath Parameter
@@ -33,7 +33,7 @@
 			$return = false;
 			if ( $this->xml_data_filepath ) { // Check for XML Data Filepath
 				$this->xml_data_object = new \XMLReader();
-				$this->xml_data_object->open( $this->xml_data_filepath );
+				$return = $this->xml_data_object->open( $this->xml_data_filepath );
 			} // End of Check for XML Data Filepath
 			return $return;
 		} // End of Declare \Markguyver\LivefyreImporter\Helper\XML_Iterator->set_xml_data_object() function
@@ -51,7 +51,7 @@
 		
 		protected function set_xml_iteration_node_name( $iteration_node_name ) { // Declare \Markguyver\LivefyreImporter\Helper\XML_Iterator->set_xml_iteration_node_name() function
 			$return = false;
-			$iteration_node_name = static::validate_string( $iteration_node_name );
+			$iteration_node_name = $this->validate_string( $iteration_node_name );
 			if ( $iteration_node_name ) { // Check for Passed Iteration Node Name
 				$return = (bool) $this->xml_iteration_node_name = $iteration_node_name;
 			} // End of Check for Passed Iteration Node Name

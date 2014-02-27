@@ -43,7 +43,7 @@
 	
 		protected function find_comment_by_id( $comment_id ) { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Conversation->find_comment_by_id() function
 			$return = false;
-			$comment_id = static::validate_int( $comment_id );
+			$comment_id = $this->validate_int( $comment_id );
 			if ( $comment_id ) { // Check for Passed Parameter
 				foreach ( $this->comments AS $current_comment ) { // Loop through Comments
 					if ( $current_comment->get_id() == $comment_id ) { // Check if Parent Comment Exists

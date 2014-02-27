@@ -20,7 +20,7 @@
 			if ( !empty( $this->author_id ) ) { // Check for Author Info
 				$return->author_id = $this->author_id;
 			} else { // Middle of Check for Author Info
-				$return->imported_display_name = ( !empty( $this->imported_display_name ) ? $this->imported_display_name : static::DEFAULT_DISPLAY_NAME );
+				$return->imported_display_name = ( ! empty( $this->imported_display_name ) ? $this->imported_display_name : static::$default_display_name );
 				if ( !empty( $this->imported_email ) ) { // Check for Author Email
 					$return->imported_email = $this->imported_email;
 				} // End of Check for Author Email

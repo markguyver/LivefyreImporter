@@ -13,14 +13,14 @@
 			$root = array_shift( $class );
 			$primary = array_shift( $class );
 			if ( ( 'Markguyver' == $root ) AND ( 'LivefyreImporter' == $primary ) ) { // Check for Framework Namespace
-				$filepath_prefixes = array( 'object', 'trait' );
+				$filepath_prefixes = array( 'trait', 'object' );
 				foreach ( $class AS $current_namespace ) { // Loop through Object Namespace
 					$filepath[] = strtolower( $current_namespace );
 				} // End of Loop through Object Namespace
 				$filepath[] = 'php';
 				foreach ( $filepath_prefixes AS $current_prefix ) { // Loop through Filepath Prefixes
 					$current_class_path = get_library_path() . implode( '.', array_merge( array( $current_prefix ), $filepath ) );
-					if ( file_exists( $current_class_path ) ) { // Check for Constructed Filepath
+					if ( is_readable( $current_class_path ) ) { // Check for Constructed Filepath
 						include_once( $current_class_path );
 					} // End of Check for Constructed Filepath
 				} // End of Loop through Filepath Prefixes

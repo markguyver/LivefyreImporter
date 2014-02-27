@@ -25,7 +25,7 @@
 		} // End of Declare \Markguyver\LivefyreImporter\Data\Livefyre\Comment->get_default_display_name() function
 		
 		public static function set_default_display_name( $display_name ) { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Comment->set_default_display_name() function
-			$display_name = static::validate_string( $display_name );
+			$display_name = $this->validate_string( $display_name );
 			if ( $display_name ) { // Check for Passed Parameter
 				static::$default_display_name = $display_name;
 			} // End of Check for Passed Parameter
@@ -36,11 +36,11 @@
 			$return->id						= $this->id;
 			$return->body_html				= $this->body_html;
 			$return->created				= $this->created;
-			$return->imported_display_name	= ( !empty( $this->imported_display_name ) ? $this->imported_display_name : static::DEFAULT_DISPLAY_NAME );
-			if ( !empty( $this->imported_email ) ) { // Check for Author Email
+			$return->imported_display_name	= ( ! empty( $this->imported_display_name ) ? $this->imported_display_name : static::$default_display_name );
+			if ( ! empty( $this->imported_email ) ) { // Check for Author Email
 				$return->imported_email = $this->imported_email;
 			} // End of Check for Author Email
-			if ( !empty( $this->parent_id ) ) { // Check for Parent ID
+			if ( ! empty( $this->parent_id ) ) { // Check for Parent ID
 				$return->parent_id = $this->parent_id;
 			} // End of Check for Parent ID
 			return $return;

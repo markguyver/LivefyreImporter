@@ -4,7 +4,7 @@
 	
 	abstract class Base { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Base abstract class
 		
-		use \Markguyver\LivefyreImporter\Helper\Validator; // Add Validator Trait
+		use \Markguyver\LivefyreImporter\Helper\Validation; // Add Validation Trait
 		
 		protected static $db_table_name;
 		
@@ -13,6 +13,15 @@
 		public static function get_db_table_name() { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Base::get_db_table_name() function
 			return static::$db_table_name;
 		} // End of Declare \Markguyver\LivefyreImporter\Data\Livefyre\Base::get_db_table_name() function
+		
+		public static function set_db_table_name( $table_name ) { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Base::set_db_table_name() function
+			$return = false;
+			$table_name = \Markguyver\LivefyreImporter\Helper\Validator::check_string( $table_name );
+			if ( $table_name ) { // Check for Passed Table Name
+				$return = (bool) static::$db_table_name = $table_name;
+			} // End of Check for Passed Table Name
+			return $return;
+		} // End of Declare \Markguyver\LivefyreImporter\Data\Livefyre\Base::set_db_table_name() function
 		
 		public function get_id() { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Base->get_id() function
 			return $this->id;

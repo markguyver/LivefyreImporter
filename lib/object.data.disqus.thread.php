@@ -40,7 +40,7 @@
 		} // End of Declare \Markguyver\LivefyreImporter\Data\Livefyre\Conversation->get_delay_export() function
 	
 		public function set_delay_export( $delay_export ) { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Conversation->set_delay_export() function
-			$this->delay_export = static::validate_boolean( $delay_export );
+			$this->delay_export = $this->validate_boolean( $delay_export );
 		} // End of Declare \Markguyver\LivefyreImporter\Data\Livefyre\Conversation->set_delay_export() function
 	
 		public function get_forum() { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Conversation->get_forum() function
@@ -49,7 +49,7 @@
 	
 		public function set_forum( $forum ) { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Conversation->set_forum() function
 			$return = false;
-			$forum = static::validate_string( $forum );
+			$forum = $this->validate_string( $forum );
 			if ( !empty( $forum ) ) { // Check for Passed Parameter
 				$return = ( $this->forum = $forum );
 			} // End of Check for Passed Parameter

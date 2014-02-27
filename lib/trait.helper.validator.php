@@ -2,8 +2,57 @@
 
 	namespace Markguyver\LivefyreImporter\Helper;
 	
+	/**
+	 * This trait provides basic variable validation.
+	 */
 	trait Validator { // Declare \Markguyver\LivefyreImporter\Helper\Validator trait
 		
+		/**
+		 * The validation mappings as such: 'data_type' => 'validation_function'.
+		 * @var array
+		 * @access protected
+		 */
+		protected static $datatype_to_function = array(
+			'str'				=> 'validate_string',
+			'string'			=> 'validate_string',
+			'float'				=> 'validate_float',
+			'double'			=> 'validate_float',
+			'int'				=> 'validate_int',
+			'integer'			=> 'validate_int',
+			'bool'				=> 'validate_boolean',
+			'boolean'			=> 'validate_boolean',
+			'datetime'			=> 'validate_datetime',
+			'url'				=> 'validate_url',
+			'ip'				=> 'validate_ip_addres',
+			'ip_addr'			=> 'validate_ip_addres',
+			'ip_address'		=> 'validate_ip_addres',
+			'email'				=> 'validate_email',
+			'email_addr'		=> 'validate_email',
+			'email_address'		=> 'validate_email'
+		);
+		
+		/**
+		 * This static method performs validations.
+		 * @param multitype $value The value to be validated
+		 * @param string $data_type The data type (should be an array key in the $validation_mappings variable)
+		 * @return multitype Passes through the validation method return value
+		 * @access public
+		 */
+		public static function validate_value( $value, $data_type ) {
+			$return = false;
+			$data_type = static::validate_string( $data_type );
+			if ( ( $data_type ) AND ( ! empty( static::$validation_mappings[$data_type] ) ) ) { // Check for Valid Passed Data Type
+				$return = static::{static::$datatype_to_function[$data_type]}( $value );
+			} // End of Check for Valid Passed Data Type
+			return $return;
+		}
+		
+		/**
+		 * This static method validates strings. Non-empty strings are not allowed.
+		 * @param string $string
+		 * @return boolean|string A trimmed string or false
+		 * @access public
+		 */
 		public static function validate_string( $string ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_string() function
 			$return = false;
 			$string = \trim( (string) $string );
@@ -13,18 +62,42 @@
 			return $return;
 		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_string() function
 		
+		/**
+		 * This static method validates floating point numbers.
+		 * @param float $float
+		 * @return float|boolean A floating point number or false
+		 * @access public
+		 */
 		public static function validate_float( $float ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_float() function
 			return ( \is_float( $float ) ? (float) $float : false );
 		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_float() function
 		
+		/**
+		 * This static method validates integers.
+		 * @param int $int
+		 * @return int|boolean An integer or false
+		 * @access public
+		 */
 		public static function validate_int( $int ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_int() function
 			return ( \is_int( $int ) ? (int) $int : false );
 		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_int() function
 		
+		/**
+		 * This static method returns boolean values.
+		 * @param boolean $boolean
+		 * @return boolean True or false
+		 * @access public
+		 */
 		public static function validate_boolean( $boolean ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_boolean() function
 			return (bool) $boolean;
 		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_boolean() function
 		
+		/**
+		 * This static method validates dates, times, and datetimes.
+		 * @param string $datetime
+		 * @return string|boolean It returns a trimmed string of what was provided or false
+		 * @access public
+		 */
 		public static function validate_datetime( $datetime ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_datetime() function
 			$return = false;
 			$datetime = static::validate_string( $datetime );
@@ -36,6 +109,13 @@
 			return $return;
 		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_datetime() function
 		
+		/**
+		 * This is a helper method that utilizes \filter_var() to validate various values (i.e. url, email address, etc).
+		 * @param string $variable
+		 * @param int $filter The filter to be used against the value
+		 * @return boolean|string The value that was passed into this function or false
+		 * @access protected
+		 */
 		protected static function filter_string_variable( $variable, $filter ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::filter_string_variable() function
 			$return = false;
 			$variable = static::validate_string( $variable );
@@ -46,14 +126,32 @@
 			return $return;
 		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::filter_string_variable() function
 		
+		/**
+		 * This static method validates URLs (using self::filter_string_variable()).
+		 * @param string $url
+		 * @return boolean|string The URL string that was passed to this object or false.
+		 * @access public
+		 */
 		public static function validate_url( $url ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_url() function
 			return static::filter_string_variable( $url, \FILTER_VALIDATE_URL );
 		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_url() function
 		
+		/**
+		 * This static method validates IP addresses (using self::filter_string_variable()).
+		 * @param string $ip_address
+		 * @return boolean|string The IP address string that was passed to this object or false.
+		 * @access public
+		 */
 		public static function validate_ip_addres( $ip_address ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_ip_addres() function
 			return static::filter_string_variable( $ip_address, \FILTER_VALIDATE_IP );
 		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_ip_addres() function
 		
+		/**
+		 * This static method validates email addresses (using self::filter_string_variable()).
+		 * @param string $email
+		 * @return boolean|string The email address string that was passed to this object or false.
+		 * @access public
+		 */
 		public static function validate_email( $email ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_email() function
 			return static::filter_string_variable( $email, \FILTER_VALIDATE_EMAIL );
 		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_email() function

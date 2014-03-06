@@ -2,6 +2,8 @@
 
 	namespace Markguyver\LivefyreImporter\Data\Livefyre;
 	
+	use \Markguyver\LivefyreImporter\Helper\Validator;
+	
 	class Comment extends Base { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Comment class
 	
 		protected $post_id;					// Required Field
@@ -31,6 +33,23 @@
 			} // End of Check for Passed Parameter
 		} // End of Declare \Markguyver\LivefyreImporter\Data\Livefyre\Comment->set_default_display_name() function
 	
+		public static function validate_imported_display_name( $imported_display_name ) {
+			return Validator::check_string( $imported_display_name );
+		}
+	
+		public static function validate_imported_email( $imported_email ) {
+			return Validator::check_email( $imported_email );
+		}
+	
+		protected function __construct( $id, $post_id, $body_html, $created, $parent_id = 0 ) {
+			// No validation here.  That should be handled by factory methods.
+			$this->id				= (int) $id;
+			$this->post_id			= (int) $post_id;
+			$this->body_html		= (string) $body_html;
+			$this->created			= (string) $created;
+			$this->parent_id		= (int) $parent_id;
+		}
+	
 		public function export_livefyre_object() {
 			$return = new \stdClass();
 			$return->id						= $this->id;
@@ -56,6 +75,20 @@
 	
 		public function get_post_id() {
 			return $this->post_id;
+		}
+	
+		public function set_imported_display_name( $imported_display_name ) {
+			$imported_display_name = static::validate_imported_display_name( $imported_display_name );
+			return $this->imported_display_name = ( $imported_display_name ? $imported_display_name : static::$default_display_name );
+		}
+	
+		public function set_imported_email( $imported_email ) {
+			$return = false;
+			$imported_email = static::validate_imported_email( $imported_email );
+			if ( $imported_email ) { // Check Email Validation
+				$return = ( $this->imported_email = $imported_email );
+			} // End of Check Email Validation
+			return $return;
 		}
 		
 	} // End of Declare \Markguyver\LivefyreImporter\Data\Livefyre\Comment class

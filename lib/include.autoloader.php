@@ -3,8 +3,8 @@
 	namespace Markguyver\LivefyreImporter;
 	
 	/**
-	 * This is the framework's object autoloader. It only includes classes in our root namespace (\Markguyver\LivefyreImporter).
-	 * The autoloader is namespace-aware and object filenames should follow: object.namespace.classname.php (with the namespaces and classnames all lowercase).
+	 * This is the framework's object autoloader. It only includes classes and traits in our root namespace (\Markguyver\LivefyreImporter).
+	 * The autoloader is namespace-aware and object/trait filenames should follow (with the namespaces and classnames all lowercase): trait.namespace.classname.php or object.namespace.classname.php
 	 * @param string $class \Markguyver\LivefyreImporter\Namespace\ClassName
 	 */
 	function object_autoloader( $class ) { // Declare \Markguyver\LivefyreImporter\object_autoloader() function

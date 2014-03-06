@@ -5,10 +5,10 @@
 	/**
 	 * This trait provides basic variable validation.
 	 */
-	trait Validation { // Declare \Markguyver\LivefyreImporter\Helper\Validator trait
+	trait Validation { // Declare \Markguyver\LivefyreImporter\Helper\Validation trait
 		
 		/**
-		 * The validation mappings as such: 'data_type' => 'validation_function'.
+		 * The validation mappings as such: 'data_type' => 'validation_function'. It is used by the $this->validate_value() method.
 		 * @var array
 		 * @access protected
 		 */
@@ -32,9 +32,9 @@
 		);
 		
 		/**
-		 * This method performs validations.
+		 * This method performs validations. It is a wrapper method that calls the other methods defined in this trait and provides a means of programmatically calling them.
 		 * @param multitype $value The value to be validated
-		 * @param string $data_type The data type (should be an array key in the $validation_mappings variable)
+		 * @param string $data_type The data type (should be an array key in the $datatype_to_function variable)
 		 * @return multitype Passes through the validation method return value
 		 * @access public
 		 */
@@ -53,14 +53,14 @@
 		 * @return boolean|string A trimmed string or false
 		 * @access public
 		 */
-		public function validate_string( $string ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_string() function
+		public function validate_string( $string ) { // Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_string() function
 			$return = false;
 			$string = \trim( (string) $string );
 			if ( !empty( $string ) ) { // Check for Passed Parameter
 				$return = $string;
 			} // End of Check for Passed Parameter
 			return $return;
-		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_string() function
+		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_string() function
 		
 		/**
 		 * This method validates floating point numbers.
@@ -68,9 +68,9 @@
 		 * @return float|boolean A floating point number or false
 		 * @access public
 		 */
-		public function validate_float( $float ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_float() function
+		public function validate_float( $float ) { // Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_float() function
 			return ( \is_float( $float ) ? (float) $float : false );
-		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_float() function
+		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_float() function
 		
 		/**
 		 * This method validates integers.
@@ -78,9 +78,9 @@
 		 * @return int|boolean An integer or false
 		 * @access public
 		 */
-		public function validate_int( $int ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_int() function
+		public function validate_int( $int ) { // Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_int() function
 			return ( \is_int( $int ) ? (int) $int : false );
-		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_int() function
+		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_int() function
 		
 		/**
 		 * This method returns boolean values.
@@ -88,9 +88,9 @@
 		 * @return boolean True or false
 		 * @access public
 		 */
-		public function validate_boolean( $boolean ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_boolean() function
+		public function validate_boolean( $boolean ) { // Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_boolean() function
 			return (bool) $boolean;
-		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_boolean() function
+		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_boolean() function
 		
 		/**
 		 * This method validates dates, times, and datetimes.
@@ -98,7 +98,7 @@
 		 * @return string|boolean It returns a trimmed string of what was provided or false
 		 * @access public
 		 */
-		public function validate_datetime( $datetime ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_datetime() function
+		public function validate_datetime( $datetime ) { // Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_datetime() function
 			$return = false;
 			$datetime = $this->validate_string( $datetime );
 			if ( !empty( $datetime ) ) { // Check for Passed Parameter
@@ -107,7 +107,7 @@
 				} // End of Validate Date String
 			} // End of Check for Passed Parameter
 			return $return;
-		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_datetime() function
+		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_datetime() function
 		
 		/**
 		 * This is a helper method that utilizes \filter_var() to validate various values (i.e. url, email address, etc).
@@ -116,7 +116,7 @@
 		 * @return boolean|string The value that was passed into this function or false
 		 * @access protected
 		 */
-		protected function filter_string_variable( $variable, $filter ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::filter_string_variable() function
+		protected function filter_string_variable( $variable, $filter ) { // Declare \Markguyver\LivefyreImporter\Helper\Validation->filter_string_variable() function
 			$return = false;
 			$variable = $this->validate_string( $variable );
 			$filter = $this->validate_int( $filter );
@@ -124,7 +124,7 @@
 				$return = \filter_var( $variable, $filter );
 			} // End of Check Passed Parameters
 			return $return;
-		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::filter_string_variable() function
+		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validation->filter_string_variable() function
 		
 		/**
 		 * This method validates URLs (using self::filter_string_variable()).
@@ -132,9 +132,9 @@
 		 * @return boolean|string The URL string that was passed to this object or false.
 		 * @access public
 		 */
-		public function validate_url( $url ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_url() function
+		public function validate_url( $url ) { // Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_url() function
 			return $this->filter_string_variable( $url, \FILTER_VALIDATE_URL );
-		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_url() function
+		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_url() function
 		
 		/**
 		 * This method validates IP addresses (using self::filter_string_variable()).
@@ -142,9 +142,9 @@
 		 * @return boolean|string The IP address string that was passed to this object or false.
 		 * @access public
 		 */
-		public function validate_ip_address( $ip_address ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_ip_address() function
+		public function validate_ip_address( $ip_address ) { // Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_ip_address() function
 			return $this->filter_string_variable( $ip_address, \FILTER_VALIDATE_IP );
-		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_ip_address() function
+		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_ip_address() function
 		
 		/**
 		 * This method validates email addresses (using self::filter_string_variable()).
@@ -152,31 +152,8 @@
 		 * @return boolean|string The email address string that was passed to this object or false.
 		 * @access public
 		 */
-		public function validate_email( $email ) { // Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_email() function
+		public function validate_email( $email ) { // Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_email() function
 			return $this->filter_string_variable( $email, \FILTER_VALIDATE_EMAIL );
-		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator::validate_email() function
+		} // End of Declare \Markguyver\LivefyreImporter\Helper\Validation->validate_email() function
 		
-		public function sanitize_string( $string ) {
-			$return = false;
-			$string = $this->validate_string( $string );
-			if ( !empty( $string ) ) { // Check String Validation
-				$return = \htmlentities( \urldecode( $string ), ENT_QUOTES | ENT_HTML401 );
-				$return = \str_replace( array( "\n\r", "\r\n", "\r", "\n" ), '<br/>', $return );
-				$return = \str_replace( array( '&nbsp;', '&amp;nbsp;', '&#160;', '&amp;#160;' ), ' ', $return );
-				$return = \str_replace( array( '&amp;', '\/' ), array( '&', '/' ), $return );
-			} // End of Check String Validation
-			return $return;
-		}
-		
-		public function sanitize_html( $string ) {
-			$return = false;
-			$string = $this->validate_string( $string );
-			if ( !empty( $string ) ) { // Check String Validation
-				$string = \mb_convert_encoding( $string, 'HTML-ENTITIES', 'UTF-8' );
-				$string = \strip_tags( $string, \Markguyver\LivefyreImporter\HTML_ALLOWED_TAGS );
-				$return = $string; // Add the HTML attribute filtering functionality - DELETE
-			} // End of Check String Validation
-			return $return;
-		}
-		
-	} // End of Declare \Markguyver\LivefyreImporter\Helper\Validator trait
+	} // End of Declare \Markguyver\LivefyreImporter\Helper\Validation trait

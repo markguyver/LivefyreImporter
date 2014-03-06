@@ -2,6 +2,8 @@
 
 	namespace Markguyver\LivefyreImporter\Data\Livefyre;
 	
+	use \Markguyver\LivefyreImporter\Helper\Validator;
+	
 	abstract class Base { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Base abstract class
 		
 		use \Markguyver\LivefyreImporter\Helper\Validation; // Add Validation Trait
@@ -44,5 +46,9 @@
 			} // End of Check for Passed Parameter Items
 			return $return;
 		} // End of Declare \Markguyver\LivefyreImporter\Data\Livefyre\Base->export_livefyre_data_objects_array() function
+	
+		public static function validate_created( $created ) {
+			return Validator::check_datetime( $created );
+		}
 		
 	} // End of Declare \Markguyver\LivefyreImporter\Data\Livefyre\Base abstract class

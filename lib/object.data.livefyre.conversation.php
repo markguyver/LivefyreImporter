@@ -14,6 +14,15 @@
 	
 		protected static $db_table_name = 'posts';
 	
+		protected function __construct( $source, $title, $created, $id, $allow_comments = true ) {
+			// No validation here.  That should be handled by factory methods.
+			$this->source			= (string) $source;
+			$this->title			= (string) $title;
+			$this->created			= (string) $created;
+			$this->id				= (int) $id;
+			$this->allow_comments	= (bool) $allow_comments;
+		}
+	
 		public function export_livefyre_object() { // Declare \Markguyver\LivefyreImporter\Data\Livefyre\Conversation->export_livefyre_object() function
 			$return = new \stdClass();
 			$return->source			= $this->source;
